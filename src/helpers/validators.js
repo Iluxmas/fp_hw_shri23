@@ -64,35 +64,35 @@ const isTriangleAndSquareSame = ({triangle, square}) => triangle === square;
 const filterNotWhiteAndGreaterThree = ([color, amount]) => color !== 'white' && amount >= 3
 
 // 1. Красная звезда, зеленый квадрат, все остальные белые.
-export const validateFieldN1 = allPass([isTriangleWhite, isCircleWhite, isStarRed, isSquareGreen])      //  works
+export const validateFieldN1 = allPass([isTriangleWhite, isCircleWhite, isStarRed, isSquareGreen])      
 
 // 2. Как минимум две фигуры зеленые.
-export const validateFieldN2 = pipe(countGreens,  gte(__, 2))     //   works
+export const validateFieldN2 = pipe(countGreens,  gte(__, 2))     
 
 // 3. Количество красных фигур равно кол-ву синих.
 export const validateFieldN3 = compose(isRedBlueSameAmount, countColors)
 
 // 4. Синий круг, красная звезда, оранжевый квадрат треугольник любого цвета
-export const validateFieldN4 = allPass([isCircleBlue, isStarRed, isSquareOrange]);      // works
+export const validateFieldN4 = allPass([isCircleBlue, isStarRed, isSquareOrange]);
 
 // 5. Три фигуры одного любого цвета кроме белого (четыре фигуры одного цвета – это тоже true).
-export const validateFieldN5 = pipe(countColors, toPairs, filter(filterNotWhiteAndGreaterThree), length, equals(1)) // works
+export const validateFieldN5 = pipe(countColors, toPairs, filter(filterNotWhiteAndGreaterThree), length, equals(1))
 
 // 6. Ровно две зеленые фигуры (одна из зелёных – это треугольник), плюс одна красная. 
 // Четвёртая оставшаяся любого доступного цвета, но не нарушающая первые два условия
-export const validateFieldN6 = allPass([isTriangleGreen, isTwoGreen, isAnyRed])   // works
+export const validateFieldN6 = allPass([isTriangleGreen, isTwoGreen, isAnyRed])
 
 // 7. Все фигуры оранжевые.
-export const validateFieldN7 = compose(checkAllOrange, values)    // works
+export const validateFieldN7 = compose(checkAllOrange, values)
 
 // 8. Не красная и не белая звезда, остальные – любого цвета.
-export const validateFieldN8 = allPass([isStarNotRed, isStarNotWhite])  // works
+export const validateFieldN8 = allPass([isStarNotRed, isStarNotWhite])
 
 // 9. Все фигуры зеленые.
-export const validateFieldN9 = compose(checkAllGreen, values)     // works
+export const validateFieldN9 = compose(checkAllGreen, values)
 
 // 10. Треугольник и квадрат одного цвета (не белого), остальные – любого цвета
-export const validateFieldN10 = allPass([isTriangleNotWhite, isTriangleAndSquareSame]) // works
+export const validateFieldN10 = allPass([isTriangleNotWhite, isTriangleAndSquareSame])
 
 
 
